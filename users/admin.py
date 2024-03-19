@@ -25,8 +25,10 @@ class UserAdmin(auth_admin.UserAdmin):
             _("Permissions"),
             {
                 "fields": (
+                    'unique_field',
                     "is_active",
                     "is_staff",
+                    "is_delete",
                     "is_superuser",
                     "groups",
                     "user_permissions",
