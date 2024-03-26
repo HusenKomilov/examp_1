@@ -13,7 +13,7 @@ urlpatterns = [
     # User management
     path("users/", include("users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
-    path("api/v1/", include("chats.urls")),
+    path("api/v1/", include("vacancy.urls")),
     # path("vacancy/", include("vacancy.urls")),
     # Your stuff: custom urls includes go here
 ]

@@ -1,7 +1,9 @@
-from django.contrib.auth.models import AbstractUser, UserManager as BaseManager
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import UserManager as BaseManager
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+
 from utils.models import BaseModel
 
 

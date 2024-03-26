@@ -7,8 +7,9 @@ __pycache__/
 
 # C extensions
 *.so
-vacancy
 venv
+avtoelon
+option
 
 # Distribution / packaging
 .Python

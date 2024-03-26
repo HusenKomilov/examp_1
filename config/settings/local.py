@@ -68,11 +68,12 @@ CELERY_TASK_EAGER_PROPAGATES = True
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "HOST": env('POSTGRES_HOST'),
-        "PORT": env('POSTGRES_PORT'),
-        "NAME": env('POSTGRES_DB'),
-        "USER": env('POSTGRES_USER'),
-        "PASSWORD": env('POSTGRES_PASSWORD')
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "mydatabase"
+        # "HOST": env("POSTGRES_HOST"),
+        # "PORT": env("POSTGRES_PORT"),
+        # "NAME": env("POSTGRES_DB"),
+        # "USER": env("POSTGRES_USER"),
+        # "PASSWORD": env("POSTGRES_PASSWORD"),
     }
 }

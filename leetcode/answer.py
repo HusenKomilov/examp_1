@@ -3,8 +3,8 @@ from typing import List
 
 
 class Solution:
-    def plusOne(self, digits: List[int]) -> List[int]:
-        a = int(''.join(map(str, digits)))
+    def plusOne(self, digits: list[int]) -> list[int]:
+        a = int("".join(map(str, digits)))
         c = str(a + 1)
         m = [int(i) for i in c]
         return m
@@ -14,7 +14,7 @@ class Solution:
 class Solution:
     def isValid(self, s: str) -> bool:
         a = []
-        base = {')': '(', ']': '[', '}': '{'}
+        base = {")": "(", "]": "[", "}": "{"}
 
         for i in s:
             if i in base.values():

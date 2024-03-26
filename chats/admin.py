@@ -1,5 +1,6 @@
 from django.contrib import admin
-from chats.models import Document, Gallery, Message, Chat, Profile
+
+from chats.models import Chat, Document, Gallery, Message, Profile
 
 
 @admin.register(Profile)

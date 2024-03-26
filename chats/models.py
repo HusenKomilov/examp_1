@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+
 from users.models import User
 from utils.models import BaseModel
 
@@ -16,8 +17,8 @@ class Message(BaseModel):
     contact = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="author")
 
     message = models.TextField(blank=True, null=True)
-    voice = models.FileField(verbose_name='voice/', blank=True, null=True)
-    location = models.CharField(blank=True, null=True)
+    voice = models.FileField(verbose_name="voice/", blank=True, null=True)
+    location = models.CharField(max_length=128, blank=True, null=True)
 
     is_watched = models.BooleanField(default=False)
 

@@ -1,6 +1,7 @@
-from rest_framework import generics, response
 from django.core.cache import cache
 from django.db.models import Count
+from rest_framework import generics, response
+
 from chats import models, serializers
 
 
@@ -9,12 +10,16 @@ class ChatListCreateView(generics.ListCreateAPIView):
     serializer_class = serializers.ChatSerializer
 
     def get_queryset(self):
-        return super().get_queryset().filter(sender_id=self.kwargs["sender_id"],
-                                             recipient_id=self.kwargs["recipient_id"]
-                                             ).select_related("sender", "profile").prefetch_related("message")
+        return (
+            super()
+            .get_queryset()
+            .filter(sender_id=self.kwargs["sender_id"], recipient_id=self.kwargs["recipient_id"])
+            .select_related("sender", "profile")
+            .prefetch_related("message")
+        )
 
     def list(self, request):
-        cached_data = cache.get('chat_data')
+        cached_data = cache.get("chat_data")
         if cached_data:
             return response.Response(cached_data)
 
@@ -22,22 +27,22 @@ class ChatListCreateView(generics.ListCreateAPIView):
         serializer = self.get_serializer(queryset, many=True)
         data = serializer.data
 
-        cache.set('chat_data', data, timeout=60)
+        cache.set("chat_data", data, timeout=60)
 
         return response.Response(data)
 
     def create(self, request):
-        cache.delete('chat_data')
+        cache.delete("chat_data")
 
         return super().create(request)
 
     def update(self, request, *args, **kwargs):
-        cache.delete('chat_data')
+        cache.delete("chat_data")
 
         return super().update(request, *args, **kwargs)
 
     def destroy(self, request, *args, **kwargs):
-        cache.delete('chat_data')
+        cache.delete("chat_data")
 
         return super().destroy(request, *args, **kwargs)
 

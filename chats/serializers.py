@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from chats import models
 
 
@@ -33,14 +34,10 @@ class MessageCreateSerializer(serializers.ModelSerializer):
     images = GallerySerializer(many=True, read_only=True)
     documents = DocumentSerializer(many=True, read_only=True)
     upload_images = serializers.ListSerializer(
-        child=serializers.FileField(max_length=128,
-                                    allow_empty_file=False,
-                                    use_url=False),
-        write_only=True
+        child=serializers.FileField(max_length=128, allow_empty_file=False, use_url=False), write_only=True
     )
     upload_documents = serializers.ListSerializer(
-        child=serializers.FileField(max_length=128, allow_empty_file=False, use_url=False),
-        write_only=True
+        child=serializers.FileField(max_length=128, allow_empty_file=False, use_url=False), write_only=True
     )
 
     class Meta:

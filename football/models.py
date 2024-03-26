@@ -1,4 +1,5 @@
 from django.db import models
+
 from utils.models import BaseModel
 
 
@@ -25,4 +26,3 @@ class Game(BaseModel):
     points = models.IntegerField(default=0)
 
     status = models.CharField(max_length=128, choices=Status.choices)
-
